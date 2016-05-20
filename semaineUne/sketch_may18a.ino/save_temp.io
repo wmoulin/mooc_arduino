@@ -9,7 +9,8 @@ boolean stepOne, stepTwo = false;
 
 void setup() {
   // parametrage des broches de sortie.
-  //pinMode(greenLed, OUTPUT);
+  pinMode(greenLed, OUTPUT);
+  digitalWrite(greenLed, HIGH);
   
   // activation de l'éntrée pour saisie clavier de l'angle et simuler une rotation du servo moteur
   Serial.begin(9600);
@@ -26,7 +27,6 @@ void loop() {
   // une valeur a été saisie
   if (val1 == val2 && pos != val1) {
     pos = val1;
-    Serial.print("valeur : ");
     
     if (stepOne) { // la première étape est déjà passée
       if(stepTwo) { // la deuxième étape est déjà passée
@@ -36,9 +36,9 @@ void loop() {
           Serial.println("Bravo, le coffre s'ouvre" );
           // faire clignoter la LED 3 fois
           for(int i = 0; i < 3; i++){
-            digitalWrite(greenLed, HIGH);
-            delay(500);
             digitalWrite(greenLed, LOW);
+            delay(500);
+            digitalWrite(greenLed, HIGH);
             delay(500);
           }
           stepOne = stepTwo = false; // reinitialisation des indicateurs
