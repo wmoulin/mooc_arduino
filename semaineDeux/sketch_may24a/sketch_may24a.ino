@@ -32,7 +32,10 @@ void setup() {
     Serial.print(".");
   }
 
-  Serial.println("WiFi connecté");  
+  Serial.println("WiFi connecté"); 
+
+  pos = map(analogRead(0), 37, 790, 0, 179);
+
 }
 
 
